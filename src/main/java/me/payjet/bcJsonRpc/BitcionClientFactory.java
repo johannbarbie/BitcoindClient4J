@@ -20,12 +20,16 @@ public class BitcionClientFactory {
 
 	final private JsonRpcHttpClient client;
 	final public Observable alertListener;
-	
+
 	/**
 	 * 
 	 * for the listener to work bitcoin has to be started like this:
 	 * 
-	 * ./bitcoind  -blocknotify="echo '%s' | nc 127.0.0.1 4001" -walletnotify="echo '%s' | nc 127.0.0.1 4002" -alertnotify="echo '%s' | nc 127.0.0.1 4003" -datadir=/home/ubuntu/bcdData -conf=/home/ubuntu/.bitcoin/bitcoin.conf -daemon
+	 * ./bitcoind -blocknotify="echo '%s' | nc 127.0.0.1 4001"
+	 * -walletnotify="echo '%s' | nc 127.0.0.1 4002"
+	 * -alertnotify="echo '%s' | nc 127.0.0.1 4003"
+	 * -datadir=/home/ubuntu/bcdData -conf=/home/ubuntu/.bitcoin/bitcoin.conf
+	 * -daemon
 	 * 
 	 * @param url
 	 * @param username
@@ -33,14 +37,15 @@ public class BitcionClientFactory {
 	 * @throws IOException
 	 */
 
-	public BitcionClientFactory(URL url, String username, String password) throws IOException {
+	public BitcionClientFactory(URL url, String username, String password)
+			throws IOException {
 		String cred = Base64
 				.encodeBytes((username + ":" + password).getBytes());
 		Map<String, String> headers = new HashMap<>(1);
 		headers.put("Authorization", "Basic " + cred);
 		client = new JsonRpcHttpClient(url, headers);
 		alertListener = new BitcoinDListener(4003);
-		new Thread((Runnable)alertListener,"alertListener").start();
+		new Thread((Runnable) alertListener, "alertListener").start();
 	}
 
 	public BitcoinQtInterface getClient() {
@@ -57,14 +62,15 @@ public class BitcionClientFactory {
 
 		BitcionClientFactory clientFactory = new BitcionClientFactory(new URL(
 				"http://54.250.198.109:8332/"), "admin", "test9900");
-		
+
 		final BitcoinQtInterface client = clientFactory.getClient();
-		
+
 		new BlockListener(client).addObserver(new Observer() {
 			@Override
 			public void update(Observable o, Object arg) {
 				try {
-					System.out.println(new ObjectMapper().writeValueAsString(arg));
+					System.out.println(new ObjectMapper()
+							.writeValueAsString(arg));
 				} catch (JsonProcessingException e) {
 					e.printStackTrace();
 				}
@@ -74,23 +80,25 @@ public class BitcionClientFactory {
 			@Override
 			public void update(Observable o, Object arg) {
 				try {
-					System.out.println(new ObjectMapper().writeValueAsString(arg));
+					System.out.println(new ObjectMapper()
+							.writeValueAsString(arg));
 				} catch (JsonProcessingException e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
+
 		clientFactory.alertListener.addObserver(new Observer() {
 			@Override
 			public void update(Observable o, Object arg) {
-				System.out.println("alert: "+arg);
+				System.out.println("alert: " + arg);
 			}
 		});
-		
-		
-		System.out.println("info: " + new ObjectMapper().writeValueAsString(client.getinfo()));
-		// System.out.println(new ObjectMapper().writeValueAsString(client.getblock("00000000000000776aa11c57f7b53cd5c48d2069b2525c0489671fbcb09f0db1")));
+
+		System.out.println("info: "
+				+ new ObjectMapper().writeValueAsString(client.getinfo()));
+		// System.out.println(new
+		// ObjectMapper().writeValueAsString(client.getblock("00000000000000776aa11c57f7b53cd5c48d2069b2525c0489671fbcb09f0db1")));
 		// System.out.println("blockcount:" + client.getblockcount());
 		// System.out.println("getAccountAddress:" +
 		// client.getaccountaddress(""));
