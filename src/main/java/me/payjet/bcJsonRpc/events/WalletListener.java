@@ -4,17 +4,16 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import me.payjet.bcJsonRpc.BitcoinDListener;
-import me.payjet.bcJsonRpc.BitcoinQtInterface;
+import me.payjet.bcJsonRpc.BitcoindInterface;
 import me.payjet.bcJsonRpc.pojo.Transaction;
 
 public class WalletListener extends Observable implements Observer {
 
 	final private Observable walletListener;
-	final private BitcoinQtInterface client;
+	final private BitcoindInterface client;
 	public Thread listener = null;
 
-	public WalletListener(final BitcoinQtInterface client) throws IOException {
+	public WalletListener(final BitcoindInterface client) throws IOException {
 		walletListener = new BitcoinDListener(4002);
 		this.client = client;
 	}

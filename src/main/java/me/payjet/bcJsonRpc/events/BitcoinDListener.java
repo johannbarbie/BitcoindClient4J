@@ -1,4 +1,4 @@
-package me.payjet.bcJsonRpc;
+package me.payjet.bcJsonRpc.events;
 
 import java.io.IOException;
 import java.net.ServerSocket;

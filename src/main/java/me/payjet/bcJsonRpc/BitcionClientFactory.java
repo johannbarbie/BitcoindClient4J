@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import me.payjet.bcJsonRpc.events.BitcoinDListener;
 import me.payjet.bcJsonRpc.events.BlockListener;
 import me.payjet.bcJsonRpc.events.WalletListener;
 
@@ -48,10 +49,10 @@ public class BitcionClientFactory {
 		new Thread((Runnable) alertListener, "alertListener").start();
 	}
 
-	public BitcoinQtInterface getClient() {
+	public BitcoindInterface getClient() {
 		return ProxyUtil.createClientProxy(
-				BitcoinQtInterface.class.getClassLoader(),
-				BitcoinQtInterface.class, client);
+				BitcoindInterface.class.getClassLoader(),
+				BitcoindInterface.class, client);
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class BitcionClientFactory {
 		BitcionClientFactory clientFactory = new BitcionClientFactory(new URL(
 				"http://54.250.198.109:8332/"), "admin", "test9900");
 
-		final BitcoinQtInterface client = clientFactory.getClient();
+		final BitcoindInterface client = clientFactory.getClient();
 
 		new BlockListener(client).addObserver(new Observer() {
 			@Override

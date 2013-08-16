@@ -12,7 +12,7 @@ import me.payjet.bcJsonRpc.pojo.LastBlock;
 import me.payjet.bcJsonRpc.pojo.Transaction;
 
 
-public interface BitcoinQtInterface {
+public interface BitcoindInterface {
 	//Returns an object containing various state info.
 	public Info getinfo();
 	//Safely copies wallet.dat to destination, which can be a directory or a path with filename.
