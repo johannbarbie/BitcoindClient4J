@@ -1,0 +1,60 @@
+package me.payjet.bcJsonRpc;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Observable;
+
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class BitcoinDListener extends Observable implements Runnable {
+	public static Logger log = LoggerFactory.getLogger(BitcoinDListener.class);
+	private final ServerSocket server;
+	private int port;
+
+	public BitcoinDListener(int port) throws IOException {
+		server = new ServerSocket(port);
+		this.port = port;
+	}
+
+	@Override
+	public void run() {
+		log.info("Thread " + Thread.currentThread().getName()
+				+ "started lintening on " + port);
+		while (!Thread.currentThread().isInterrupted()) {
+			Socket connection = null;
+			try {
+				connection = server.accept();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				break;
+			}
+			try {
+				String s = IOUtils.toString(connection.getInputStream());
+				setChanged();
+				notifyObservers(s);
+				connection.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				// sockets are closed when complete.
+				try {
+					if (connection != null)
+						connection.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		log.warn("Thread " + Thread.currentThread().getName() + " exited");
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		server.close();
+		log.info("Thread " + Thread.currentThread().getName() + " shutting down.");
+		super.finalize();
+	}
+	
+}

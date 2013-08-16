@@ -1,0 +1,5 @@
+target
+.settings
+.project
+datanucleus.log
+.classpath
