@@ -1,17 +1,18 @@
 # Bitcoind Json Rpc Client for Java
+[![Build Status](http://54.250.198.109:5080/buildStatus/icon?job=continuous_build_BitcoindClient4J)](http://54.250.198.109:5080/job/continuous_build_BitcoindClient4J/)
 
-This is a Java library to call the Json Rpc API of the reference implementation Bitcoind. The goal is to support all methods listed by `./bitcoind` help. The implementation started from version 8.3 of Bitcoind and will not support previous versions. For further details about the implemented API visit [the bitcoin.org wiki](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
+This is a Java library to call the Json Rpc API of the reference implementation Bitcoind. The goal is to support all methods listed in the `./bitcoind help`-command. The implementation started from version 8.3 of Bitcoind and will not support previous versions. For further details about the implemented API visit [the bitcoin.org wiki](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
 
 ## Build
 
-Having OpenJDK 7 and [Maven 3](http://maven.apache.org/download.cgi) installed, execute:
+Having [OpenJDK 7](http://openjdk.java.net/install/) and [Maven 3](http://maven.apache.org/download.cgi) installed, execute:
 ```bash
   mvn clean install
 ```
 
 ## Usage
 
-Maven will need to know where to search for this artifact. Add this to your pom.xml:
+Maven will need to know where to search for this artifact. Add this to your `pom.xml`:
 ```xml
   <repository>
     <id>github</id>
