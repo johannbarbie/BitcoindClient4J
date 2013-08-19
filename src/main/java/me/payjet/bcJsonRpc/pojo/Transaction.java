@@ -3,8 +3,12 @@ package me.payjet.bcJsonRpc.pojo;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+@JsonInclude(Include.NON_NULL)
+//@JsonIgnoreProperties(ignoreUnknown=true)
 public class Transaction {
 	
 	public enum Category {
@@ -45,6 +49,8 @@ public class Transaction {
 	private Category category;
 	private long confirmations;
 	private long time;
+	private long timereceived;
+	private long blocktime;
 	private List<Transaction> details;
 	private String address;
     private String txid;
@@ -122,6 +128,18 @@ public class Transaction {
 	}
 	public void setTime(long time) {
 		this.time = time;
+	}
+	public long getTimereceived() {
+		return timereceived;
+	}
+	public void setTimereceived(long timereceived) {
+		this.timereceived = timereceived;
+	}
+	public long getBlocktime() {
+		return blocktime;
+	}
+	public void setBlocktime(long blocktime) {
+		this.blocktime = blocktime;
 	}
     
     

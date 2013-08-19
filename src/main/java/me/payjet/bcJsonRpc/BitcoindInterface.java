@@ -28,7 +28,7 @@ public interface BitcoindInterface {
 	//Returns the current bitcoin address for receiving payments to this account.
 	public String getaccountaddress(String accountLabel);
 	//Returns the list of addresses for the given account.
-	public void getaddressesbyaccount(String accountLabel);
+	public List<String> getaddressesbyaccount(String accountLabel);
 	//If [account] is not specified, returns the server's total available balance.
 	//If [account] is specified, returns the balance in the account.
 	public void getbalance(String account, int minimumConfirmations);
@@ -63,13 +63,13 @@ public interface BitcoindInterface {
 	// Import a private key into your bitcoin wallet. Private key must be in wallet import format (Sipa) beginning with a '5'.
 	public boolean importprivkey(String privateKey);
 	//Move funds from one account in your wallet to another.
-	public String move(String fromAccount, String toAccount, long amount);
+	public String move(String fromAccount, String toAccount, double amount);
 	//amount is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object).
-	public String sendfrom(String fromAccount, String bitcoinAddress, long amount);
+	public String sendfrom(String fromAccount, String bitcoinAddress, double amount);
 	//amounts are double-precision floating point numbers.
 	public String sendmany(String fromAccount, Map<String,Double> addressAmountPairs);
 	//amount is a real and is rounded to 8 decimal places. Returns the transaction hash if successful.
-	public String sendtoaddress(String bitcoinAddress, long amount);
+	public String sendtoaddress(String bitcoinAddress, double amount);
 	// Return information about bitcoinaddress.
 	public AddressInformation validateaddress(String bitcoinAddress);
 	//Returns a new bitcoin address for receiving payments. If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account].

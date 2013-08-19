@@ -62,7 +62,7 @@ public class BitcionClientFactory {
 	public static void main(String[] args) throws Throwable {
 
 		BitcionClientFactory clientFactory = new BitcionClientFactory(new URL(
-				"http://54.250.198.109:8332/"), "admin", "test9900");
+				"http://127.0.0.1:8332/"), "admin", "test9900");
 
 		final BitcoindInterface client = clientFactory.getClient();
 
@@ -96,23 +96,24 @@ public class BitcionClientFactory {
 			}
 		});
 
-		System.out.println("info: "
-				+ new ObjectMapper().writeValueAsString(client.getinfo()));
-		// System.out.println(new
-		// ObjectMapper().writeValueAsString(client.getblock("00000000000000776aa11c57f7b53cd5c48d2069b2525c0489671fbcb09f0db1")));
+		//System.out.println("info: "+ new ObjectMapper().writeValueAsString(client.getinfo()));
+		//System.out.println("account: "+ new ObjectMapper().writeValueAsString(client.getaccount("mgPZmH6D2KDbEc5DPYfLoLmuph6qT2LC4p")));
+		//System.out.println("accountAddress: "+ new ObjectMapper().writeValueAsString(client.getaccountaddress("test")));
+		//System.out.println("listreceivedbyaccount: "+ new ObjectMapper().writeValueAsString(client.listreceivedbyaccount(0, true)));
+		//System.out.println("move: "+ new ObjectMapper().writeValueAsString(client.move("test", "test2", 1)));
+		//System.out.println("list received by address: "+ new ObjectMapper().writeValueAsString(client.listreceivedbyaddress(0, true)));
+		//System.out.println("list addresses: "+ new ObjectMapper().writeValueAsString(client.getaddressesbyaccount("test")));
+		//System.out.println("send: "+ new ObjectMapper().writeValueAsString(client.sendfrom("test", "mrGY1vX2oMZaEofgjPMtGZMgbb1Y7M3U48", 0.2)));
+		System.out.println("get transaction: "+ new ObjectMapper().writeValueAsString(client.gettransaction("79738a09b123b5f265db2ea6fcf8e0460fabfce44536c854b8a519ea6caffd8f")));
+		// System.out.println(new ObjectMapper().writeValueAsString(client.getblock("00000000000000776aa11c57f7b53cd5c48d2069b2525c0489671fbcb09f0db1")));
 		// System.out.println("blockcount:" + client.getblockcount());
-		// System.out.println("getAccountAddress:" +
-		// client.getaccountaddress(""));
+		// System.out.println("getAccountAddress:" + client.getaccountaddress(""));
 		// System.out.println("connectionCount:" + client.getconnectioncount());
 		// System.out.println("difficulty:" + client.getdifficulty());
 		// System.out.println("generate?:" + client.getgenerate());
 		// System.out.println("listAccounts:" + client.listaccounts(0));
-		// System.out.println("receivedByAccount:" + new
-		// ObjectMapper().writeValueAsString(client.listreceivedbyaccount(0,
-		// true)));
-		// System.out.println("list Transactions:" + new
-		// ObjectMapper().writeValueAsString(client.listtransactions("", 25,
-		// 0)));
+		// System.out.println("receivedByAccount:" + new ObjectMapper().writeValueAsString(client.listreceivedbyaccount(0, true)));
+		// System.out.println("list Transactions:" + new ObjectMapper().writeValueAsString(client.listtransactions("", 25, 0)));
 
 		try {
 			System.in.read();
