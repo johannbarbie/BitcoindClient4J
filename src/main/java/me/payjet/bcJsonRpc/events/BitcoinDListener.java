@@ -1,11 +1,12 @@
 package me.payjet.bcJsonRpc.events;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Observable;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,10 +33,13 @@ public class BitcoinDListener extends Observable implements Runnable {
 				break;
 			}
 			try {
-				String s = IOUtils.toString(connection.getInputStream());
-				setChanged();
-				notifyObservers(s);
-				connection.close();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			    String line;
+			    if ((line = reader.readLine()) != null) {
+				    setChanged();
+					notifyObservers(line);
+					connection.close();
+			    }
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {

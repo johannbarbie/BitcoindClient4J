@@ -17,7 +17,7 @@ import com.googlecode.jsonrpc4j.Base64;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 
-public class BitcionClientFactory {
+public class BitcoindClientFactory {
 
 	final private JsonRpcHttpClient client;
 	final public Observable alertListener;
@@ -38,7 +38,7 @@ public class BitcionClientFactory {
 	 * @throws IOException
 	 */
 
-	public BitcionClientFactory(URL url, String username, String password)
+	public BitcoindClientFactory(URL url, String username, String password)
 			throws IOException {
 		String cred = Base64
 				.encodeBytes((username + ":" + password).getBytes());
@@ -61,7 +61,7 @@ public class BitcionClientFactory {
 	 */
 	public static void main(String[] args) throws Throwable {
 
-		BitcionClientFactory clientFactory = new BitcionClientFactory(new URL(
+		BitcoindClientFactory clientFactory = new BitcoindClientFactory(new URL(
 				"http://127.0.0.1:8332/"), "admin", "test9900");
 
 		final BitcoindInterface client = clientFactory.getClient();
