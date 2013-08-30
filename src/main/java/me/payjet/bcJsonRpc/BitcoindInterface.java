@@ -31,9 +31,7 @@ public interface BitcoindInterface {
 	public List<String> getaddressesbyaccount(String accountLabel);
 	//If [account] is not specified, returns the server's total available balance.
 	//If [account] is specified, returns the balance in the account.
-	public void getbalance(String account, int minimumConfirmations);
-	//returns the server's total available balance.
-	public void getServerBalance(int minimumConfirmations);
+	public double getbalance(String account, int minimumConfirmations);
 	//Returns information about the block with the given hash.
 	public Block getblock(String blockHash);
 	//Returns the number of blocks in the longest block chain.

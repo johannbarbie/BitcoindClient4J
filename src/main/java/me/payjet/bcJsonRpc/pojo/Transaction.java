@@ -60,86 +60,100 @@ public class Transaction {
 	public double getFee() {
 		return fee;
 	}
-	public void setFee(double fee) {
+	public Transaction setFee(double fee) {
 		this.fee = fee;
+		return this;
 	}
 	public double getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public Transaction setAmount(double amount) {
 		this.amount = amount;
+		return this;
 	}
 	public long getBlockindex() {
 		return blockindex;
 	}
-	public void setBlockindex(long blockindex) {
+	public Transaction setBlockindex(long blockindex) {
 		this.blockindex = blockindex;
+		return this;
 	}
 	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(Category category) {
+	public Transaction setCategory(Category category) {
 		this.category = category;
+		return this;
 	}
 	public long getConfirmations() {
 		return confirmations;
 	}
-	public void setConfirmations(long confirmations) {
+	public Transaction setConfirmations(long confirmations) {
 		this.confirmations = confirmations;
+		return this;
 	}
 	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public Transaction setAddress(String address) {
 		this.address = address;
+		return this;
 	}
 	public String getTxid() {
 		return txid;
 	}
-	public void setTxid(String txid) {
+	public Transaction setTxid(String txid) {
 		this.txid = txid;
+		return this;
 	}
 	public long getBlock() {
 		return block;
 	}
-	public void setBlock(long block) {
+	public Transaction setBlock(long block) {
 		this.block = block;
+		return this;
 	}
 	public String getBlockhash() {
 		return blockhash;
 	}
-	public void setBlockhash(String blockhash) {
+	public Transaction setBlockhash(String blockhash) {
 		this.blockhash = blockhash;
+		return this;
 	}
 	public List<Transaction> getDetails() {
 		return details;
 	}
-	public void setDetails(List<Transaction> details) {
+	public Transaction setDetails(List<Transaction> details) {
 		this.details = details;
+		return this;
 	}
 	public String getAccount() {
 		return account;
 	}
-	public void setAccount(String account) {
+	public Transaction setAccount(String account) {
 		this.account = account;
+		return this;
 	}
 	public long getTime() {
 		return time;
 	}
-	public void setTime(long time) {
+	public Transaction setTime(long time) {
 		this.time = time;
+		return this;
 	}
 	public long getTimereceived() {
 		return timereceived;
 	}
-	public void setTimereceived(long timereceived) {
+	public Transaction setTimereceived(long timereceived) {
 		this.timereceived = timereceived;
+		return this;
 	}
 	public long getBlocktime() {
 		return blocktime;
 	}
-	public void setBlocktime(long blocktime) {
+	public Transaction setBlocktime(long blocktime) {
 		this.blocktime = blocktime;
+		return this;
 	}
     
     

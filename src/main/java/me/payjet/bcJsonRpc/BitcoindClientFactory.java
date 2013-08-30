@@ -2,7 +2,9 @@ package me.payjet.bcJsonRpc;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -10,6 +12,8 @@ import java.util.Observer;
 import me.payjet.bcJsonRpc.events.BitcoinDListener;
 import me.payjet.bcJsonRpc.events.BlockListener;
 import me.payjet.bcJsonRpc.events.WalletListener;
+import me.payjet.bcJsonRpc.pojo.Transaction;
+import me.payjet.bcJsonRpc.pojo.Transaction.Category;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,6 +59,28 @@ public class BitcoindClientFactory {
 				BitcoindInterface.class, client);
 	}
 
+	public static Map<String,Object> txToMap(Transaction t){
+		List<Map<String,Object>> receive = new ArrayList<>();
+		List<Map<String,Object>> send = new ArrayList<>();
+		for (Transaction tr : t.getDetails()){
+			Map<String,Object> m = new HashMap<>();
+			m.put("amount", tr.getAmount());
+			m.put("fee",tr.getFee());
+			m.put("address", tr.getAddress());
+			if (tr.getCategory()==Category.RECEIVE){
+				receive.add(m);
+			}else{
+				send.add(m);
+			}
+		}
+		Map<String,Object> rv = new HashMap<>();
+		rv.put("confirmations", t.getConfirmations());
+		rv.put("txid", t.getTxid());
+		rv.put("receive", receive);
+		rv.put("send", send);
+		rv.put("account",t.getAccount());
+		return rv;
+	}
 	/**
 	 * @param args
 	 * @throws Throwable
