@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class Transaction {
 	
 	public enum Category {
-	    RECEIVE("receive");
+	    RECEIVE("receive"),
+	    SEND("send");
 	    
 	    private String text;
 

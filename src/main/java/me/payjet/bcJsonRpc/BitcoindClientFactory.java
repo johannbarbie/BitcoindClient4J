@@ -62,6 +62,7 @@ public class BitcoindClientFactory {
 	public static Map<String,Object> txToMap(Transaction t){
 		List<Map<String,Object>> receive = new ArrayList<>();
 		List<Map<String,Object>> send = new ArrayList<>();
+		String account = null;
 		for (Transaction tr : t.getDetails()){
 			Map<String,Object> m = new HashMap<>();
 			m.put("amount", tr.getAmount());
@@ -69,6 +70,8 @@ public class BitcoindClientFactory {
 			m.put("address", tr.getAddress());
 			if (tr.getCategory()==Category.RECEIVE){
 				receive.add(m);
+				//TODO: fix this
+				account = tr.getAccount();
 			}else{
 				send.add(m);
 			}
@@ -78,7 +81,7 @@ public class BitcoindClientFactory {
 		rv.put("txid", t.getTxid());
 		rv.put("receive", receive);
 		rv.put("send", send);
-		rv.put("account",t.getAccount());
+		rv.put("account",account);
 		return rv;
 	}
 	/**
