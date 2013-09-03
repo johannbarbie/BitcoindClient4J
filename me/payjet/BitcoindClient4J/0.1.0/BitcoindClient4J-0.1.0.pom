@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>BitcoinClient4J</artifactId>
+	<artifactId>BitcoindClient4J</artifactId>
 	<packaging>jar</packaging>
 	<description>A client for the bincoind node</description>
-	<name>BitcoinClient4j</name>
+	<name>BitcoindClient4j</name>
 	<groupId>me.payjet</groupId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 
 	<properties>
 		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
@@ -33,11 +33,6 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -104,7 +99,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub ${project.artifactId} Repository</name>
-			<url>https://raw.github.com/johba/${project.artifactId}/mvn-repo</url>
+			<url>https://raw.github.com/johannbarbie/${project.artifactId}/mvn-repo</url>
 		</repository>
 	</distributionManagement>
 
