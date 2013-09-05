@@ -23,7 +23,7 @@ Maven will need to know where to search for this artifact. Add this to your `pom
 Then add the dependency itself:
 ```xml
   <dependency>
-    <groupId>me.payjet</groupId>
+    <groupId>com.37coins</groupId>
     <artifactId>BitcoindClient4j</artifactId>
     <version>0.1.0</version>
   </dependency>
