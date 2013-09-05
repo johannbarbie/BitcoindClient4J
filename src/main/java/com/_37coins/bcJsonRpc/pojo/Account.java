@@ -1,4 +1,4 @@
-package me.payjet.bcJsonRpc.pojo;
+package com._37coins.bcJsonRpc.pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

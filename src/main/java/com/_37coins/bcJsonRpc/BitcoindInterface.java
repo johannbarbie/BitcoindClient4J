@@ -1,15 +1,16 @@
-package me.payjet.bcJsonRpc;
+package com._37coins.bcJsonRpc;
 
 import java.util.List;
 import java.util.Map;
 
-import me.payjet.bcJsonRpc.pojo.Account;
-import me.payjet.bcJsonRpc.pojo.Address;
-import me.payjet.bcJsonRpc.pojo.AddressInformation;
-import me.payjet.bcJsonRpc.pojo.Block;
-import me.payjet.bcJsonRpc.pojo.Info;
-import me.payjet.bcJsonRpc.pojo.LastBlock;
-import me.payjet.bcJsonRpc.pojo.Transaction;
+import com._37coins.bcJsonRpc.pojo.Account;
+import com._37coins.bcJsonRpc.pojo.Address;
+import com._37coins.bcJsonRpc.pojo.AddressInformation;
+import com._37coins.bcJsonRpc.pojo.Block;
+import com._37coins.bcJsonRpc.pojo.Info;
+import com._37coins.bcJsonRpc.pojo.LastBlock;
+import com._37coins.bcJsonRpc.pojo.Transaction;
+
 
 
 public interface BitcoindInterface {

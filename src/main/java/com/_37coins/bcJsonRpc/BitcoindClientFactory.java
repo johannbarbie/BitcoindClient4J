@@ -1,4 +1,4 @@
-package me.payjet.bcJsonRpc;
+package com._37coins.bcJsonRpc;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-import me.payjet.bcJsonRpc.events.BitcoinDListener;
-import me.payjet.bcJsonRpc.pojo.Transaction;
-import me.payjet.bcJsonRpc.pojo.Transaction.Category;
 
+import com._37coins.bcJsonRpc.events.BitcoinDListener;
+import com._37coins.bcJsonRpc.pojo.Transaction;
+import com._37coins.bcJsonRpc.pojo.Transaction.Category;
 import com.googlecode.jsonrpc4j.Base64;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;

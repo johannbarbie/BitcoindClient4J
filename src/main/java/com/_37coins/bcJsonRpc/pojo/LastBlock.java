@@ -1,4 +1,4 @@
-package me.payjet.bcJsonRpc.pojo;
+package com._37coins.bcJsonRpc.pojo;
 
 import java.util.List;
 

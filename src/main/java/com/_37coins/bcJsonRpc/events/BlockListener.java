@@ -1,11 +1,12 @@
-package me.payjet.bcJsonRpc.events;
+package com._37coins.bcJsonRpc.events;
 
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import me.payjet.bcJsonRpc.BitcoindInterface;
-import me.payjet.bcJsonRpc.pojo.Block;
+import com._37coins.bcJsonRpc.BitcoindInterface;
+import com._37coins.bcJsonRpc.pojo.Block;
+
 
 public class BlockListener extends Observable implements Observer {
 

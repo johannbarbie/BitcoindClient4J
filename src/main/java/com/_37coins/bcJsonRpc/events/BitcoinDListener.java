@@ -1,4 +1,4 @@
-package me.payjet.bcJsonRpc.events;
+package com._37coins.bcJsonRpc.events;
 
 import java.io.BufferedReader;
 import java.io.IOException;
