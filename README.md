@@ -1,5 +1,5 @@
 # Bitcoind Json Rpc Client for Java
-[![Build Status](http://staging.37coins.com:4080/buildStatus/icon?job=Bitcoin-JSON-RPC-Client)](http://staging.37coins.com:4080/job/Bitcoin-JSON-RPC-Client/)
+[![Build Status](http://staging.37coins.com:4080/buildStatus/icon?job=build_BitcoindClient4j)](http://staging.37coins.com:4080/job/build_BitcoindClient4j/)
 
 This is a Java library to call the Json Rpc API of the reference implementation Bitcoind. The goal is to support all methods listed in the `./bitcoind help`-command. The implementation started from version 8.3 of Bitcoind and will not support previous versions. For further details about the implemented API visit [the bitcoin.org wiki](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
 

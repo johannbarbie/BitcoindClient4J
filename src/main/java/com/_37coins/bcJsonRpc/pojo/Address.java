@@ -1,19 +1,21 @@
 package com._37coins.bcJsonRpc.pojo;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 //@JsonIgnoreProperties(ignoreUnknown=true)
 public class Address {
-    private double amount;
+    private BigDecimal amount;
     private long confirmations;
     private String address;
     private String account;
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 	public long getConfirmations() {

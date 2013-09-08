@@ -1,5 +1,6 @@
 package com._37coins.bcJsonRpc;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,11 @@ import com._37coins.bcJsonRpc.pojo.Transaction;
 
 
 public interface BitcoindInterface {
+	//Add a nrequired-to-sign multisignature address to the wallet. Each key is a bitcoin address or hex-encoded public key.
+	public String addmultisigaddress(int nrequired, String keys);
+	//If [account] is specified, assign address to [account].
+	public String addmultisigaddress(int nrequired, String keys, String account);
+	
 	//Returns an object containing various state info.
 	public Info getinfo();
 	//Safely copies wallet.dat to destination, which can be a directory or a path with filename.
@@ -21,7 +27,7 @@ public interface BitcoindInterface {
 	//Removes the wallet encryption key from memory, locking the wallet. After calling this method, you will need to call walletpassphrase again before being able to call any methods which require the wallet to be unlocked.
 	public void walletlock(); //?
 	//rounded to the nearest 0.00000001
-	public boolean settxfee(double fee);
+	public boolean settxfee(BigDecimal fee);
 	//Sets the account associated with the given address. Assigning address that is already assigned to the same account will create a new address associated with that account.
 	public boolean setaccount(String bitcoinAddress, String accountLabel);
 	//Returns the account associated with the given address.
@@ -31,8 +37,11 @@ public interface BitcoindInterface {
 	//Returns the list of addresses for the given account.
 	public List<String> getaddressesbyaccount(String accountLabel);
 	//If [account] is not specified, returns the server's total available balance.
+	public BigDecimal getbalance();
 	//If [account] is specified, returns the balance in the account.
-	public double getbalance(String account, int minimumConfirmations);
+	public BigDecimal getbalance(String account);
+	//
+	public BigDecimal getbalance(String account, int minimumConfirmations);
 	//Returns information about the block with the given hash.
 	public Block getblock(String blockHash);
 	//Returns the number of blocks in the longest block chain.
@@ -42,7 +51,7 @@ public interface BitcoindInterface {
 	//Returns the number of connections to other nodes.
 	public int getconnectioncount();
 	//Returns the proof-of-work difficulty as a multiple of the minimum difficulty.
-	public double getdifficulty();
+	public BigDecimal getdifficulty();
 	//Returns true or false whether bitcoind is currently generating hashes
 	public boolean getgenerate();
 	//Returns a recent hashes per second performance measurement while generating.
@@ -50,7 +59,7 @@ public interface BitcoindInterface {
 	//Returns an object about the given transaction hash.
 	public Transaction gettransaction(String hash);
 	//Returns Object that has account names as keys, account balances as values.
-	public Map<String,Double> listaccounts(long confirmations);
+	public Map<String,BigDecimal> listaccounts(long confirmations);
 	//Returns an array of objects containing:"account" : the account of the receiving addresses,"amount" : total amount received by addresses with this account,"confirmations" : number of confirmations of the most recent transaction included
 	public List<Account> listreceivedbyaccount(long minConfirmations, boolean includeEmpty);
 	//Returns an array of objects containing:"address" : receiving address,"account" : the account of the receiving address,"amount" : total amount received by the address,"confirmations" : number of confirmations of the most recent transaction included,To get a list of accounts on the system, execute bitcoind listreceivedbyaddress 0 true
@@ -62,13 +71,13 @@ public interface BitcoindInterface {
 	// Import a private key into your bitcoin wallet. Private key must be in wallet import format (Sipa) beginning with a '5'.
 	public boolean importprivkey(String privateKey);
 	//Move funds from one account in your wallet to another.
-	public String move(String fromAccount, String toAccount, double amount);
+	public String move(String fromAccount, String toAccount, BigDecimal amount);
 	//amount is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object).
-	public String sendfrom(String fromAccount, String bitcoinAddress, double amount);
-	//amounts are double-precision floating point numbers.
-	public String sendmany(String fromAccount, Map<String,Double> addressAmountPairs);
+	public String sendfrom(String fromAccount, String bitcoinAddress, BigDecimal amount);
+	//amounts are BigDecimal-precision floating point numbers.
+	public String sendmany(String fromAccount, Map<String,BigDecimal> addressAmountPairs);
 	//amount is a real and is rounded to 8 decimal places. Returns the transaction hash if successful.
-	public String sendtoaddress(String bitcoinAddress, double amount);
+	public String sendtoaddress(String bitcoinAddress, BigDecimal amount);
 	// Return information about bitcoinaddress.
 	public AddressInformation validateaddress(String bitcoinAddress);
 	//Returns a new bitcoin address for receiving payments. If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account].

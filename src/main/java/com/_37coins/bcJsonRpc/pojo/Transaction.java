@@ -1,5 +1,6 @@
 package com._37coins.bcJsonRpc.pojo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -44,8 +45,8 @@ public class Transaction {
 	}
 
 
-	private double fee;
-	private double amount;
+	private BigDecimal fee;
+	private BigDecimal amount;
 	private long blockindex;
 	private Category category;
 	private long confirmations;
@@ -58,17 +59,17 @@ public class Transaction {
     private long block;
     private String blockhash;
     private String account;
-	public double getFee() {
+	public BigDecimal getFee() {
 		return fee;
 	}
-	public Transaction setFee(double fee) {
+	public Transaction setFee(BigDecimal fee) {
 		this.fee = fee;
 		return this;
 	}
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
-	public Transaction setAmount(double amount) {
+	public Transaction setAmount(BigDecimal amount) {
 		this.amount = amount;
 		return this;
 	}
