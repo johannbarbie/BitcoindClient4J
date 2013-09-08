@@ -71,7 +71,7 @@ public interface BitcoindInterface {
 	// Import a private key into your bitcoin wallet. Private key must be in wallet import format (Sipa) beginning with a '5'.
 	public boolean importprivkey(String privateKey);
 	//Move funds from one account in your wallet to another.
-	public String move(String fromAccount, String toAccount, BigDecimal amount);
+	public boolean move(String fromAccount, String toAccount, BigDecimal amount);
 	//amount is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object).
 	public String sendfrom(String fromAccount, String bitcoinAddress, BigDecimal amount);
 	//amounts are BigDecimal-precision floating point numbers.
