@@ -67,13 +67,15 @@ public interface BitcoindInterface {
 	//Get all transactions in blocks since block [blockhash], or all transactions if omitted.
 	public List<LastBlock> listsinceblock(String blockhash, int minConfirmations);
 	//Returns up to [count] most recent transactions skipping the first [from] transactions for account [account]. If [account] not provided will return recent transaction from all accounts.
-	public List<LastBlock> listtransactions(String account, int count, int offset);
+	public List<Transaction> listtransactions(String account, int count, int offset);
 	// Import a private key into your bitcoin wallet. Private key must be in wallet import format (Sipa) beginning with a '5'.
 	public boolean importprivkey(String privateKey);
 	//Move funds from one account in your wallet to another.
 	public boolean move(String fromAccount, String toAccount, BigDecimal amount);
+	public boolean move(String fromAccount, String toAccount, BigDecimal amount, long minconf, String comment);
 	//amount is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object).
 	public String sendfrom(String fromAccount, String bitcoinAddress, BigDecimal amount);
+	public String sendfrom(String fromAccount, String bitcoinAddress, BigDecimal amount, long minconf, String comment, String commentTo);
 	//amounts are BigDecimal-precision floating point numbers.
 	public String sendmany(String fromAccount, Map<String,BigDecimal> addressAmountPairs);
 	//amount is a real and is rounded to 8 decimal places. Returns the transaction hash if successful.

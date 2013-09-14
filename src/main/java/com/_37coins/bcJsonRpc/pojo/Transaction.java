@@ -14,7 +14,8 @@ public class Transaction {
 	
 	public enum Category {
 	    RECEIVE("receive"),
-	    SEND("send");
+	    SEND("send"),
+	    MOVE("move");
 	    
 	    private String text;
 
@@ -59,6 +60,25 @@ public class Transaction {
     private long block;
     private String blockhash;
     private String account;
+    private String otheraccount;
+    private String comment;
+    private String to;
+    
+    
+	public String getOtheraccount() {
+		return otheraccount;
+	}
+	public Transaction setOtheraccount(String otheraccount) {
+		this.otheraccount = otheraccount;
+		return this;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public Transaction setComment(String comment) {
+		this.comment = comment;
+		return this;
+	}
 	public BigDecimal getFee() {
 		return fee;
 	}
@@ -155,6 +175,13 @@ public class Transaction {
 	}
 	public Transaction setBlocktime(long blocktime) {
 		this.blocktime = blocktime;
+		return this;
+	}
+	public String getTo() {
+		return to;
+	}
+	public Transaction setTo(String to) {
+		this.to = to;
 		return this;
 	}
     
