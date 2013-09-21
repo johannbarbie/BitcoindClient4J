@@ -40,5 +40,9 @@ public class BlockListener extends Observable implements Observer {
 			}
 		}).start();
 	}
+	
+	public void stop(){
+		listener.interrupt();
+	}
 
 }

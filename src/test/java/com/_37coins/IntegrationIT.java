@@ -16,7 +16,7 @@ import com._37coins.bcJsonRpc.pojo.Info;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class IntegrationTest {
+public class IntegrationIT {
 	
 	static BitcoindInterface client;
 	
