@@ -63,7 +63,7 @@ Or, if you have your bitcoind locally, have the API start up the daemon. Call th
 ```java
   BitcoindClientFactory clientFactory = 
       new BitcoindClientFactory(
-          "/Users/johann/bitcoindeamon/",
+          "/home/user/.bitcoin/",
           Arrays.asList("./bitcoind"));
 ```
 
