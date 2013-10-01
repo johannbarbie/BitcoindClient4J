@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import com._37coins.bcJsonRpc.BitcoindClientFactory;
 import com._37coins.bcJsonRpc.BitcoindInterface;
 import com._37coins.bcJsonRpc.pojo.Transaction;
 
@@ -15,7 +16,11 @@ public class WalletListener extends Observable implements Observer {
 	public Thread listener = null;
 
 	public WalletListener(final BitcoindInterface client) throws IOException {
-		walletListener = new BitcoinDListener(4002);
+		if (BitcoindClientFactory.walletSocket!=null){
+			walletListener = new BitcoinDListener(BitcoindClientFactory.walletSocket);
+		}else{
+			walletListener = new BitcoinDListener(4002);
+		}
 		this.client = client;
 	}
 

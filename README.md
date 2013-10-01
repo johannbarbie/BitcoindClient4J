@@ -28,10 +28,10 @@ Then add the dependency itself:
     <version>0.1.0</version>
   </dependency>
 ```
-Having dependencies resolved, you can code away. First initialize the Factory:
+Having dependencies resolved, you can code away. First initialize the Factory with network parameters:
 ```java
-  BitcionClientFactory clientFactory = 
-      new BitcionClientFactory(
+  BitcoindClientFactory clientFactory = 
+      new BitcoindClientFactory(
           new URL("http://localhost:8332/"), 
           "user", 
           "password");
@@ -44,6 +44,12 @@ Now you can make calls to your node:
 ```java
   Info info = client.getinfo();
 ```
+
+If you had the API start your bitcoind, you might be interested in stopping it again:
+```java
+  client.stop();
+```
+
 ### Blockchain Events
 
 The library also captures notifications from Bitcoind using the startup configuration. Launch your deamon with those parameters:
@@ -53,7 +59,15 @@ The library also captures notifications from Bitcoind using the startup configur
               -alertnotify="echo '%s' | nc 127.0.0.1 4003" 
               -daemon
 ```
-You can register observers to capture events about blocks and addresses in you wallet:
+Or, if you have your bitcoind locally, have the API start up the daemon. Call the factory with a path instead of network parameters:
+```java
+  BitcoindClientFactory clientFactory = 
+      new BitcoindClientFactory(
+          "/Users/johann/bitcoindeamon/",
+          Arrays.asList("./bitcoind"));
+```
+
+You can register observers to capture events about blocks, addresses in you wallet, and alerts:
 ```java
   new BlockListener(client).addObserver(new Observer() {
     @Override
@@ -62,22 +76,11 @@ You can register observers to capture events about blocks and addresses in you w
     }
   });
 ```
-Bitcoind also emits alerts. You need to start a listener for them like this:
+
+Make sure to close sockets later:
 ```java
-  Observable alertListener = new BitcoinDListener(4003);
-  alertListener.addObserver(new Observer() {
-      @Override
-      public void update(Observable o, Object arg) {
-        log.info("alert: {}",arg);
-      }
-  });
-  new Thread((Runnable)alertListener,"alertListener").start();
+  blockListener.stop();
 ```
-
-### Host, Port and SSL
-
-Host and port can be configured by passing an URL to the constructor as described before. SSL is not supported.
-
 
 ## Donations
 

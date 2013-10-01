@@ -88,5 +88,7 @@ public interface BitcoindInterface {
 	public String signmessage(String bitcoinaddress, String message);
 	//Verifies the signature and message matches the bitcoin address provided (See signmessage)
 	public boolean verifymessage(String bitcoinaddress, String signature, String message);
+	//stop
+	public String stop();
 	
 }

@@ -19,6 +19,11 @@ public class BitcoinDListener extends Observable implements Runnable {
 		server = new ServerSocket(port);
 		this.port = port;
 	}
+	
+	public BitcoinDListener(ServerSocket server) throws IOException {
+		this.server = server;
+		this.port = server.getLocalPort();
+	}
 
 	@Override
 	public void run() {
