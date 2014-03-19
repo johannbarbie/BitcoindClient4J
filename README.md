@@ -1,7 +1,7 @@
 # Bitcoind Json Rpc Client for Java
 [![Build Status](http://staging.37coins.com:4080/buildStatus/icon?job=build_BitcoindClient4j)](http://staging.37coins.com:4080/job/build_BitcoindClient4j/)
 
-This is a Java library to call the Json Rpc API of the reference implementation Bitcoind. The goal is to support all methods listed in the `./bitcoind help`-command. The implementation started from version 8.3 of Bitcoind and will not support previous versions. For further details about the implemented API visit [the bitcoin.org wiki](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
+This is a Java library to call the Json Rpc API of the reference implementation Bitcoind. The goal is to support all methods listed in the `./bitcoind help`-command. The implementation started from version 0.8.3 of Bitcoind and will not support previous versions. For further details about the implemented API visit [the bitcoin.org wiki](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list). Currently tested version is 0.9.0.
 
 ## Build
 
@@ -24,8 +24,8 @@ Then add the dependency itself:
 ```xml
   <dependency>
     <groupId>com.37coins</groupId>
-    <artifactId>BitcoindClient4j</artifactId>
-    <version>0.1.0</version>
+    <artifactId>BitcoindClient4J</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
   </dependency>
 ```
 Having dependencies resolved, you can code away. First initialize the Factory with network parameters:
