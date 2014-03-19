@@ -15,6 +15,7 @@ public class Transaction {
 	public enum Category {
 	    RECEIVE("receive"),
 	    SEND("send"),
+	    CONFLICTED("conflicted"),
 	    MOVE("move");
 	    
 	    private String text;
@@ -54,10 +55,12 @@ public class Transaction {
 	private long time;
 	private long timereceived;
 	private long blocktime;
+	private List<String> walletconflicts;
 	private List<Transaction> details;
 	private String address;
     private String txid;
     private long block;
+    private String hex;
     private String blockhash;
     private String account;
     private String otheraccount;
@@ -96,6 +99,13 @@ public class Transaction {
 	public long getBlockindex() {
 		return blockindex;
 	}
+	public List<String> getWalletconflicts() {
+		return walletconflicts;
+	}
+	public Transaction setWalletconflicts(List<String> walletconflicts) {
+		this.walletconflicts = walletconflicts;
+		return this;
+	}
 	public Transaction setBlockindex(long blockindex) {
 		this.blockindex = blockindex;
 		return this;
@@ -133,6 +143,14 @@ public class Transaction {
 	}
 	public Transaction setBlock(long block) {
 		this.block = block;
+		return this;
+	}
+	
+	public String getHex() {
+		return hex;
+	}
+	public Transaction setHex(String hex) {
+		this.hex = hex;
 		return this;
 	}
 	public String getBlockhash() {
