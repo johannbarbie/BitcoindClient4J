@@ -78,8 +78,12 @@ public interface BitcoindInterface {
 	public String sendfrom(String fromAccount, String bitcoinAddress, BigDecimal amount, long minconf, String comment, String commentTo);
 	//amounts are BigDecimal-precision floating point numbers.
 	public String sendmany(String fromAccount, Map<String,BigDecimal> addressAmountPairs);
+	//amounts are BigDecimal-precision floating point numbers.
+	public String sendmany(String fromAccount, Map<String,BigDecimal> addressAmountPairs, int minconf, String comment);
 	//amount is a real and is rounded to 8 decimal places. Returns the transaction hash if successful.
 	public String sendtoaddress(String bitcoinAddress, BigDecimal amount);
+	public void setgenerate (boolean generate);
+	public void setgenerate (boolean generate, int genproclimit);
 	// Return information about bitcoinaddress.
 	public AddressInformation validateaddress(String bitcoinAddress);
 	//Returns a new bitcoin address for receiving payments. If [account] is specified (recommended), it is added to the address book so payments received with the address will be credited to [account].

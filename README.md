@@ -14,19 +14,19 @@ Having [OpenJDK 7](http://openjdk.java.net/install/) and [Maven 3](http://maven.
 
 Maven will need to know where to search for this artifact. Add this to your `pom.xml`:
 ```xml
-  <repository>
-    <id>github</id>
-    <name>GitHub BitcoindClient4j Repository</name>
-    <url>https://raw.github.com/johannbarbie/BitcoindClient4j/mvn-repo</url>
-  </repository>
+    <repository>
+      <id>BitcoindClient4j</id>
+      <name>GitHub BitcoindClient4j Repository</name>
+      <url>https://s3.amazonaws.com/37mvnrepo/release</url>
+    </repository>
 ```
 Then add the dependency itself:
 ```xml
-  <dependency>
-    <groupId>com.37coins</groupId>
-    <artifactId>BitcoindClient4J</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
-  </dependency>
+    <dependency>
+      <groupId>com.37coins</groupId>
+      <artifactId>BitcoindClient4J</artifactId>
+      <version>0.2.2</version>
+    </dependency>
 ```
 Having dependencies resolved, you can code away. First initialize the Factory with network parameters:
 ```java
