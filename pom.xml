@@ -71,28 +71,21 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-
 		</plugins>
-    <extensions>
-      <extension>
-        <groupId>org.springframework.build</groupId>
-        <artifactId>aws-maven</artifactId>
-        <version>5.0.0.RELEASE</version>
-      </extension>
-    </extensions>
+	    <extensions>
+	      <extension>
+	        <groupId>org.springframework.build</groupId>
+	        <artifactId>aws-maven</artifactId>
+	        <version>5.0.0.RELEASE</version>
+	      </extension>
+	    </extensions>
 	</build>
 
-  <distributionManagement>
-    <repository>
-      <id>aws-release</id>
-      <name>AWS Release Repository</name>
-      <url>s3://37mvnrepo/release</url>
-    </repository>
-    <snapshotRepository>
-      <id>aws-snapshot</id>
-      <name>AWS Snapshot Repository</name>
-      <url>s3://37mvnrepo/snapshot</url>
-    </snapshotRepository>
-  </distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>37coins.myMavenRepo.write</id>
+            <url>http://repo.mymavenrepo.com/8HyTMtil2kKL4arfqWnf/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
