@@ -22,6 +22,7 @@ public class Info {
 	private long keypoololdest;
 	private long keypoolsize;
 	private BigDecimal paytxfee;
+	private BigDecimal relayfee;
 	private String errors;
 	public long getVersion() {
 		return version;
@@ -108,4 +109,11 @@ public class Info {
 		this.errors = errors;
 	}
 
+	public BigDecimal getRelayfee() {
+		return relayfee;
+	}
+
+	public void setRelayfee(BigDecimal relayfee) {
+		this.relayfee = relayfee;
+	}
 }
