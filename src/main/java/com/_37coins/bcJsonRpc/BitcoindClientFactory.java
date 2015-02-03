@@ -131,5 +131,15 @@ public class BitcoindClientFactory {
 				BitcoindInterface.class.getClassLoader(),
 				BitcoindInterface.class, client);
 	}
-
+    /**
+     * Use to specify which Cryptocoin Client you are connecting to for example Dogecoin.
+     * @param <T> 
+     * @param clientInterface
+     * @return
+     */
+    public <T> T getClient(Class clientInterface) {
+     
+        return (T) ProxyUtil.createClientProxy(clientInterface.getClassLoader(),
+                clientInterface, client);
+    }
 }
