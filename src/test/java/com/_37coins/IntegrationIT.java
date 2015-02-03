@@ -10,7 +10,7 @@ import java.net.URL;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com._37coins.bcJsonRpc.BitcoindClientFactory;
+import com._37coins.bcJsonRpc.CryptocoinClientFactory;
 import com._37coins.bcJsonRpc.BitcoindInterface;
 import com._37coins.bcJsonRpc.pojo.Info;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,7 +22,7 @@ public class IntegrationIT {
 	
 	@BeforeClass
 	static public void before() throws MalformedURLException, IOException{
-		BitcoindClientFactory clientFactory = new BitcoindClientFactory(new URL("http://localhost:8332/"), "admin", "admin");
+		CryptocoinClientFactory clientFactory = new CryptocoinClientFactory(new URL("http://localhost:8332/"), "admin", "admin");
 		client = clientFactory.getClient();
 	}
 	
