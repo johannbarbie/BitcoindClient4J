@@ -5,13 +5,30 @@
  */
 package org.silabsoft.cryptocoin.jsonrpc.clientInterface;
 
+import java.util.List;
+import org.silabsoft.cryptocoin.jsonrpc.GenericCryptocoinClientInterface;
+import org.silabsoft.cryptocoin.jsonrpc.pojo.AddedNode;
+
 import org.silabsoft.cryptocoin.jsonrpc.pojo.dogecoin.DogecoinBlock;
+import org.silabsoft.cryptocoin.jsonrpc.pojo.dogecoin.DogecoinInfo;
 
 /**
  *
  * @author Silabsoft
  */
-public interface DogecoinDInterface {
+public interface DogecoinDInterface extends GenericCryptocoinClientInterface {
 
-    public DogecoinBlock getblock(String blockHash);
+    @Override
+    public DogecoinInfo getinfo();
+
+    @Override
+    public DogecoinBlock getblock(String hash);
+
+    public void backupwallet(String destination);
+
+    public String dumpprivkey(String address);
+
+    public List<AddedNode> getaddednodeinfo(boolean dns, String node);
+
+    public List<AddedNode> getaddednodeinfo(boolean b);
 }
