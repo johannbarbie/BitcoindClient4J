@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import com._37coins.bcJsonRpc.BitcoindClientFactory;
+import com._37coins.bcJsonRpc.CryptocoinClientFactory;
 
 
 public class AlertListener extends Observable implements Observer {
@@ -13,8 +13,8 @@ public class AlertListener extends Observable implements Observer {
 	public Thread listener = null;
 
 	public AlertListener() throws IOException {
-		if (BitcoindClientFactory.alertSocket!=null){
-			alertListener = new BitcoinDListener(BitcoindClientFactory.alertSocket);
+		if (CryptocoinClientFactory.alertSocket!=null){
+			alertListener = new BitcoinDListener(CryptocoinClientFactory.alertSocket);
 		}else{
 			alertListener = new BitcoinDListener(4003);
 		}

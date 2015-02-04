@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>BitcoindClient4J</artifactId>
+	<artifactId>CryptocoinDClient4J</artifactId>
 	<packaging>jar</packaging>
 	<description>A client for the bincoind node</description>
-	<name>BitcoindClient4j</name>
+	<name>CryptocoinDClient4J</name>
 	<groupId>com.37coins</groupId>
 	<version>0.2.2</version>
 
@@ -71,6 +71,40 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+                                <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- <mainClass>com.mycompany.mypackage.MyMainClass</mainClass> -->
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.dstovall</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <!-- Optional -->
+                            <onejarVersion>0.97</onejarVersion>
+                            <!-- Optional, use only if you need to include native libraries (dll's) -->
+                            <binlibs>
+                            </binlibs>
+                            <!-- Optional, default is false -->
+                            <attachToBuild>true</attachToBuild>
+                            <!-- Optional, default is "onejar" -->
+                            <classifier>onejar</classifier>
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	    <extensions>
 	      <extension>
@@ -87,5 +121,10 @@
             <url>http://repo.mymavenrepo.com/8HyTMtil2kKL4arfqWnf/</url>
         </repository>
     </distributionManagement>
-
+  <pluginRepositories>
+        <pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

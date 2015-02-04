@@ -11,16 +11,18 @@ import com._37coins.bcJsonRpc.pojo.Block;
 import com._37coins.bcJsonRpc.pojo.Info;
 import com._37coins.bcJsonRpc.pojo.LastBlock;
 import com._37coins.bcJsonRpc.pojo.Transaction;
+import org.silabsoft.cryptocoin.jsonrpc.GenericCryptocoinClientInterface;
 
 
 
-public interface BitcoindInterface {
+public interface BitcoindInterface extends GenericCryptocoinClientInterface{
 	//Add a nrequired-to-sign multisignature address to the wallet. Each key is a bitcoin address or hex-encoded public key.
 	public String addmultisigaddress(int nrequired, String keys);
 	//If [account] is specified, assign address to [account].
 	public String addmultisigaddress(int nrequired, String keys, String account);
 	
 	//Returns an object containing various state info.
+        @Override
 	public Info getinfo();
 	//Safely copies wallet.dat to destination, which can be a directory or a path with filename.
 	public boolean backupwallet();
@@ -43,6 +45,7 @@ public interface BitcoindInterface {
 	//
 	public BigDecimal getbalance(String account, int minimumConfirmations);
 	//Returns information about the block with the given hash.
+        @Override
 	public Block getblock(String blockHash);
 	//Returns the number of blocks in the longest block chain.
 	public long getblockcount();

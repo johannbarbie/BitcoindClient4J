@@ -17,13 +17,13 @@ import com.googlecode.jsonrpc4j.Base64;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 
-public class BitcoindClientFactory {
+public class CryptocoinClientFactory {
 
 	public static ServerSocket blockSocket;
 	public static ServerSocket walletSocket;
 	public static ServerSocket alertSocket;
 	
-	private static Logger LOG = LoggerFactory.getLogger(BitcoindClientFactory.class);
+	private static Logger LOG = LoggerFactory.getLogger(CryptocoinClientFactory.class);
 	private static String OS = System.getProperty("os.name").toLowerCase();
 
 	private static String convertStream(java.io.InputStream is) {
@@ -51,7 +51,7 @@ public class BitcoindClientFactory {
 	 * @param password
 	 * @throws IOException
 	 */
-	public BitcoindClientFactory(URL url, String username, String password)
+	public CryptocoinClientFactory(URL url, String username, String password)
 			throws IOException {
 		String cred = Base64
 				.encodeBytes((username + ":" + password).getBytes());
@@ -60,7 +60,7 @@ public class BitcoindClientFactory {
 		client = new JsonRpcHttpClient(url, headers);
 	}
 	
-	public BitcoindClientFactory(String path, final List<String> cmd) throws IOException{
+	public CryptocoinClientFactory(String path, final List<String> cmd) throws IOException{
 		if (isWindows()){
 			throw new RuntimeException("OS not supported");
 		}
@@ -131,5 +131,15 @@ public class BitcoindClientFactory {
 				BitcoindInterface.class.getClassLoader(),
 				BitcoindInterface.class, client);
 	}
-
+    /**
+     * Use to specify which Cryptocoin Client you are connecting to for example Dogecoin.
+     * @param <T> 
+     * @param clientInterface
+     * @return
+     */
+    public <T> T getClient(Class clientInterface) {
+     
+        return (T) ProxyUtil.createClientProxy(clientInterface.getClassLoader(),
+                clientInterface, client);
+    }
 }
