@@ -6,19 +6,27 @@
 package org.silabsoft.cryptocoin.jsonrpc.pojo.dogecoin;
 
 import com._37coins.bcJsonRpc.pojo.Block;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.silabsoft.cryptocoin.jsonrpc.pojo.AuxPOW;
 
 /**
  *
  * @author Silabsoft
  */
-@JsonIgnoreProperties(ignoreUnknown=true) //ignoring for auxpow
-public class DogecoinBlock extends Block{
-  private  String chainwork;
+public class DogecoinBlock extends Block {
+
+    private String chainwork;
+    private AuxPOW auxpow;
 
     public String getChainwork() {
         return chainwork;
     }
 
+    public AuxPOW getAuxpow() {
+        return auxpow;
+    }
+
+    public void setAuxpow(AuxPOW auxpow) {
+        this.auxpow = auxpow;
+    }
 
 }

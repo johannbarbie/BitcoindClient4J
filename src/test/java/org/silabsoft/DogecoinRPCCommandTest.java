@@ -11,6 +11,8 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.silabsoft.cryptocoin.jsonrpc.clientInterface.DogecoinDInterface;
+import org.silabsoft.cryptocoin.jsonrpc.pojo.AddedNode;
+import org.silabsoft.cryptocoin.jsonrpc.pojo.RPCClientException;
 import org.silabsoft.cryptocoin.jsonrpc.pojo.dogecoin.DogecoinInfo;
 
 /**
@@ -31,8 +33,11 @@ public class DogecoinRPCCommandTest {
                             USER_NAME,
                             PASSWORD);
             DogecoinDInterface client = clientFactory.getClient(DogecoinDInterface.class);
-            DogecoinInfo info = client.getinfo();
-            System.out.println(info.getBalance()+" "+info.getUnlocked_until());
+
+            AddedNode[] test=  client.getaddednodeinfo(true).toArray(new AddedNode[0]);
+            for(AddedNode n : test){
+                System.out.println(n.getAddednode());
+            }
         } catch (IOException ex) {
             Logger.getLogger(DogecoinBlockNotifyTest.class.getName()).log(Level.SEVERE, null, ex);
         }

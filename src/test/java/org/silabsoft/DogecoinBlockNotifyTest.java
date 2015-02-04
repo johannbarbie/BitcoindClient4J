@@ -6,6 +6,7 @@
 package org.silabsoft;
 
 import com._37coins.bcJsonRpc.CryptocoinClientFactory;
+import com._37coins.bcJsonRpc.events.BlockListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Observable;
@@ -13,14 +14,13 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.silabsoft.cryptocoin.jsonrpc.clientInterface.DogecoinDInterface;
-import org.silabsoft.cryptocoin.jsonrpc.events.dogecoin.DogecoinBlockListener;
 import org.silabsoft.cryptocoin.jsonrpc.pojo.dogecoin.DogecoinBlock;
 
 /**
  *
  * @author Unsignedbyte
  */
-public class ConnectionTest {
+public class DogecoinBlockNotifyTest {
 
     public static final String USER_NAME = "silab_local";
     public static final String PASSWORD = "uF9vfavXOsN7nCpPl2yH";
@@ -35,7 +35,7 @@ public class ConnectionTest {
                             PASSWORD);
           DogecoinDInterface client = clientFactory.getClient(DogecoinDInterface.class);
            
-            new DogecoinBlockListener(client).addObserver(new Observer() {
+            new BlockListener(client).addObserver(new Observer() {
                 @Override
                 public void update(Observable o, Object arg) {
                     DogecoinBlock block = (DogecoinBlock) arg;
@@ -43,7 +43,7 @@ public class ConnectionTest {
                 }
             });
         } catch (IOException ex) {
-            Logger.getLogger(ConnectionTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DogecoinBlockNotifyTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

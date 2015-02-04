@@ -5,17 +5,29 @@ import java.util.Observable;
 import java.util.Observer;
 
 import com._37coins.bcJsonRpc.CryptocoinClientFactory;
-import com._37coins.bcJsonRpc.BitcoindInterface;
 import com._37coins.bcJsonRpc.pojo.Block;
+import org.silabsoft.cryptocoin.jsonrpc.GenericCryptocoinClientInterface;
 
-
+/**
+ *
+ * @author Unsignedbyte
+ */
 public class BlockListener extends Observable implements Observer {
 
 	final private Observable blockListener;
-	final private BitcoindInterface client;
-	public Thread listener = null;
+	final private GenericCryptocoinClientInterface client;
 
-	public BlockListener(final BitcoindInterface client) throws IOException {
+    /**
+     *
+     */
+    public Thread listener = null;
+
+    /**
+     *
+     * @param client
+     * @throws IOException
+     */
+    public BlockListener(final GenericCryptocoinClientInterface client) throws IOException {
 		if (CryptocoinClientFactory.blockSocket!=null){
 			blockListener = new BitcoinDListener(CryptocoinClientFactory.blockSocket);
 		}else{
@@ -23,7 +35,19 @@ public class BlockListener extends Observable implements Observer {
 		}
 		this.client = client;
 	}
-
+        
+    /**
+     * Used to set port for daemons that are not started with the java application.
+     * @param client
+     * @param port
+     * @throws IOException
+     */
+    public BlockListener(final GenericCryptocoinClientInterface client,int port) throws IOException {
+		
+			blockListener = new BitcoinDListener(port);
+		
+		this.client = client;
+	}
 	@Override
 	public synchronized void addObserver(Observer o) {
 		if (null == listener) {
@@ -46,7 +70,10 @@ public class BlockListener extends Observable implements Observer {
 		}).start();
 	}
 	
-	public void stop(){
+    /**
+     *
+     */
+    public void stop(){
 		listener.interrupt();
 	}
 
